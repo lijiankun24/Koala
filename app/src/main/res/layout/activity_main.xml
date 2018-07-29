@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lijiankun24.koala.MainActivity">
+    tools:context="com.lijiankun24.koalademo.MainActivity">
 
     <TextView
+        android:id="@+id/tv_test"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@android:color/holo_blue_light"
