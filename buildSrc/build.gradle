@@ -1,5 +1,7 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -15,6 +17,14 @@ dependencies {
 //    compile 'com.android.tools.build:gradle:3.1.3'
     compile 'org.ow2.asm:asm-all:5.2'
 }
+
+repositories {
+    mavenCentral()
+}
+
+group = 'com.lijiankun24.koala'  // 组名 jcenter中的仓库路径
+version = '1.0.0' // 版本
+apply from: 'bintray.gradle'
 
 //group='com.lijiankun24.koala'
 //version='1.0.0'
