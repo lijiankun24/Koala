@@ -11,7 +11,6 @@ import org.gradle.api.Project
 class Koala implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        project.logger.error("====== Hello Gradle Plugin =======")
         def android = project.extensions.findByType(AppExtension.class)
         android.registerTransform(new PreClass(project))
     }
