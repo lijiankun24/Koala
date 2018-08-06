@@ -26,6 +26,7 @@ android {
     }
 }
 
+// --------- JCenter 发布
 //publish {
 //    userOrg = 'lijiankun'                             //bintray.com用户名
 //    groupId = 'com.lijiankun24'                       //jcenter上的路径

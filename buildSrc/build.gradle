@@ -1,95 +1,48 @@
-//plugins {
-//    id "com.jfrog.bintray" version "1.8.4"
-//}
-
 apply plugin: 'groovy'
 apply plugin: 'maven'
-//apply plugin: 'com.jfrog.bintray'
-//apply plugin: 'maven-publish'
-
-dependencies {
-
-    compile gradleApi()
-    compile localGroovy()
-
-    compile 'com.android.tools.build:gradle:2.3.3'
-    compile 'org.ow2.asm:asm-all:5.2'
-}
 
 repositories {
     jcenter()
     mavenCentral()
 }
 
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:2.3.3'
+    compile 'org.ow2.asm:asm-all:5.2'
+}
+
+// -------------- 发布 gradle plugin -----------
+//buildscript {
+//    repositories {
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//    }
+//    dependencies {
+//        classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+//    }
+//}
 //
-//def siteUrl = 'https://github.com/lijiankun24/Koala'        // 项目主页
-//def gitUrl = 'https://github.com/lijiankun24/Koala.git'     // 项目的 git 地址
-//def libName = "koala-plugin"                                // 发布到 JCenter 上的项目名字
+//apply plugin: "com.gradle.plugin-publish"
+//version = "1.0.2"            // 插件的版本号
+//group = "com.lijiankun24"    // 插件的组名
 //
-//group = "com.lijiankun24"
-//version = "1.0.0"                                           // 版本号，下次更新是只需要更改版本号即可
+//pluginBundle {
+//    website = 'https://github.com/lijiankun24/Koala'
+//    vcsUrl = 'https://github.com/lijiankun24/Koala.git'
+//    description = 'A library to cost duration of method.'       // 插件的描述
+//    tags = ['Gragle Plugin', 'ASM', 'Cost Time']                // 插件的标签
 //
-//// 配置maven库，生成POM.xml文件
-//install {
-//    repositories.mavenInstaller {
-//        // This generates POM.xml with proper parameters
-//        pom {
-//            project {
-//                packaging 'aar'
-//                name 'A library to cost duration of method.'
-//                artifactId 'koala-plugin'
-//                url siteUrl
-//                licenses {
-//                    license {
-//                        //开源协议
-//                        name 'The Apache Software License, Version 2.0'
-//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//                    }
-//                }
-//                developers {
-//                    developer {
-//                        //开发者的个人信息
-//                        id 'lijiankun'
-//                        name 'lijiankun'
-//                        email 'jiankunli24@gmail.com'
-//                    }
-//                }
-//                scm {
-//                    connection gitUrl
-//                    developerConnection gitUrl
-//                    url siteUrl
-//                }
-//            }
+//    plugins {
+//        greetingsPlugin {
+//            id = 'com.lijiankun24.koala-plugin'                 // 就是刚才定义属性文件时使用的ID
+//            displayName = 'KoalaPlugin'                         // 添加依赖时使用的名字
 //        }
 //    }
 //}
-//
-////上传到JCenter
-//bintray {
-//    user = 'lijiankun'
-//    key = xxxxxxxxxxx      // 需要换成个人的 API Key
-//    configurations = ['archives']
-//    pkg {
-//        //注意：这里的repo值必须要和你创建Maven仓库的时候的名字一样
-//        repo = "maven"
-//        //发布到JCenter上的项目名字
-//        name = libName
-//        //项目描述
-//        desc = 'A library to cost duration of method.'
-//        websiteUrl = siteUrl
-//        vcsUrl = gitUrl
-//        licenses = ["Apache-2.0"]
-//        publish = true
-//    }
-//}
-//
-//javadoc {
-//    options{
-//        //如果你的项目里面有中文注释的话，必须将格式设置为UTF-8，不然会出现乱码
-//        encoding "UTF-8"
-//        charSet 'UTF-8'
-//        author true
-//        version true
-//        links "http://docs.oracle.com/javase/7/docs/api"
-//    }
-//}
+
+
+
+
