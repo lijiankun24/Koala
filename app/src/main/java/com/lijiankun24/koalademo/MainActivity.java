@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 costTime();
+                forTest();
             }
         });
     }
@@ -25,5 +26,25 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 100000; ) {
             i++;
         }
+    }
+
+    @Cost
+    public static void forTest() {
+
+    }
+
+    @Cost
+    public static void forTest(int i) {
+
+    }
+
+    @Cost
+    public static void forTest(int i, int j) {
+
+    }
+
+    @Cost
+    public static void forTest(int i, int j, int z) {
+
     }
 }
