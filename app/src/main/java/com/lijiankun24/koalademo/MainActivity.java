@@ -6,6 +6,9 @@ import android.view.View;
 
 import com.lijiankun24.koala.Cost;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                costTime();
-                forTest();
+                getList();
             }
         });
     }
@@ -29,22 +31,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Cost
-    public static void forTest() {
-
+    private List<String> getList() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add(String.valueOf(i));
+        }
+        return list;
     }
 
-    @Cost
-    public static void forTest(int i) {
-
-    }
-
-    @Cost
-    public static void forTest(int i, int j) {
-
-    }
-
-    @Cost
-    public static void forTest(int i, int j, int z) {
-
-    }
+//
+//    @Cost
+//    public static void forTest() {
+//
+//    }
+//
+//    @Cost
+//    public static void forTest(int i) {
+//
+//    }
+//
+//    @Cost
+//    public static void forTest(int i, int j) {
+//
+//    }
+//
+//    @Cost
+//    public static void forTest(int i, int j, int z) {
+//
+//    }
 }

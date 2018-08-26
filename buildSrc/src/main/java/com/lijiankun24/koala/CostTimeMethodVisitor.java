@@ -3,6 +3,7 @@ package com.lijiankun24.koala;
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.commons.AdviceAdapter;
 
@@ -56,8 +57,8 @@ class CostTimeMethodVisitor extends AdviceAdapter {
 
     @Override
     public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-        System.out.println("the method's visitAnnotation");
         if (Type.getDescriptor(Cost.class).equals(desc)) {
+            System.out.println("the method's visitAnnotation");
             isInjected = true;
         }
         return super.visitAnnotation(desc, visible);
@@ -65,8 +66,8 @@ class CostTimeMethodVisitor extends AdviceAdapter {
 
     @Override
     protected void onMethodEnter() {
-        System.out.println("the method's onMethodEnter");
         if (isInjected) {
+            System.out.println("the method's onMethodEnter");
             startTimeId = newLocal(Type.LONG_TYPE);
             mv.visitMethodInsn(INVOKESTATIC, "java/lang/System", "currentTimeMillis", "()J", false);
             mv.visitIntInsn(LSTORE, startTimeId);
@@ -75,8 +76,52 @@ class CostTimeMethodVisitor extends AdviceAdapter {
 
     @Override
     protected void onMethodExit(int opcode) {
-        System.out.println("the method's onMethodExit");
         if (isInjected) {
+            String msg;
+            switch (opcode) {
+                case Opcodes.RETURN:
+                    msg = "RETURN";
+                    break;
+                case Opcodes.IRETURN:
+                    msg = "IRETURN";
+                    break;
+                case Opcodes.FRETURN:
+                    msg = "FRETURN";
+                    break;
+                case Opcodes.DRETURN:
+                    msg = "DRETURN";
+                    break;
+                case Opcodes.LRETURN:
+                    msg = "LRETURN";
+                    break;
+                case Opcodes.ATHROW:
+                    msg = "ATHROW";
+                    break;
+                case Opcodes.ARETURN:
+                    msg = "ARETURN";
+                    break;
+                default:
+                    msg = "default";
+                    break;
+            }
+            System.out.println("the method's onMethodExit opcode is " + msg);
+
+            if (opcode == RETURN) {
+                visitInsn(ACONST_NULL);
+            } else if (opcode == ARETURN || opcode == ATHROW) {
+                dup();
+            } else {
+                if (opcode == LRETURN || opcode == DRETURN) {
+                    dup2();
+                } else {
+                    dup();
+                }
+                box(Type.getReturnType(this.methodDesc));
+            }
+            // java.lang.NoClassDefFoundError
+            visitIntInsn(SIPUSH, opcode);
+            visitMethodInsn(INVOKESTATIC, "com/lijiankun24/koala/Printer",
+                    "onExit", "(Ljava/lang/Object;I)V", false);
 
             for (int i = 0; i < methodParametersNames.length; i++) {
                 System.out.println("the method's " + i + " name is " + methodParametersNames[i]);
