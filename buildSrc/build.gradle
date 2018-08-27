@@ -11,6 +11,7 @@ dependencies {
     compile localGroovy()
     compile 'com.android.tools.build:gradle:2.3.3'
     compile 'org.ow2.asm:asm-all:5.2'
+    compile project(':koala')
 }
 
 // -------------- 发布 gradle plugin -----------
