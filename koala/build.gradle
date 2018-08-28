@@ -26,6 +26,11 @@ android {
     }
 }
 
+
+dependencies {
+    compile 'org.ow2.asm:asm-all:5.2'
+}
+
 // --------- JCenter 发布
 //publish {
 //    userOrg = 'lijiankun'                             //bintray.com用户名

@@ -19,44 +19,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getList();
+                getAge(100);
             }
         });
     }
 
     @Cost
-    private void costTime() {
-        for (int i = 0; i < 100000; ) {
-            i++;
-        }
-    }
-
-    @Cost
     private List<String> getList() {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000; i++) {
             list.add(String.valueOf(i));
         }
         return list;
     }
 
-//
-//    @Cost
-//    public static void forTest() {
-//
-//    }
-//
-//    @Cost
-//    public static void forTest(int i) {
-//
-//    }
-//
-//    @Cost
-//    public static void forTest(int i, int j) {
-//
-//    }
-//
-//    @Cost
-//    public static void forTest(int i, int j, int z) {
-//
-//    }
+    @Cost
+    private int getAge(int x) {
+        int result = 0;
+        for (int i = 0; i < x; i++) {
+            result = result + i;
+        }
+        return result;
+    }
 }
