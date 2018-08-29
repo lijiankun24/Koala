@@ -4,10 +4,10 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
 /**
- * Cost.java
+ * KoalaLog.java
  * <p>
- * Created by lijiankun03 on 2018/7/29.
+ * Created by lijiankun24 on 2018/7/29.
  */
 @Target(ElementType.METHOD)
-public @interface Cost {
+public @interface KoalaLog {
 }

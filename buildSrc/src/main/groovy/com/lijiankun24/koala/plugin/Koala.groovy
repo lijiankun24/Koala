@@ -3,10 +3,11 @@ package com.lijiankun24.koala.plugin
 import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+
 /**
- * Hotfix.java
+ * Koala
  * <p>
- * Created by lijiankun on 18/4/14.
+ * Created by lijiankun24 on 18/7/29.
  */
 class Koala implements Plugin<Project> {
     @Override

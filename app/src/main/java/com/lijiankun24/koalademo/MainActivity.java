@@ -1,15 +1,20 @@
 package com.lijiankun24.koalademo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
-import com.lijiankun24.koala.Cost;
+import com.lijiankun24.koala.KoalaLog;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * MainActivity.java
+ * <p>
+ * Created by lijiankun24 on 2018/7/29.
+ */
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,27 +23,18 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getList();
-                getAge(100);
+                printPerson(new Person(20, "lijiankun24"), 100, true, (byte) 0, 'A');
             }
         });
     }
 
-    @Cost
-    private List<String> getList() {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
-            list.add(String.valueOf(i));
-        }
-        return list;
-    }
-
-    @Cost
-    private int getAge(int x) {
-        int result = 0;
-        for (int i = 0; i < x; i++) {
-            result = result + i;
-        }
-        return result;
+    @KoalaLog
+    private Person printPerson(Person person, int x, boolean flag, byte time, char temp) {
+        Log.i(TAG, "flag is " + flag);
+        Log.i(TAG, "time is " + time);
+        Log.i(TAG, "temp is " + temp);
+        person.setName("new Name");
+        person.setAge(x);
+        return person;
     }
 }

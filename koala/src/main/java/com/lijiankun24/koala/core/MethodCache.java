@@ -3,11 +3,12 @@ package com.lijiankun24.koala.core;
 import java.util.Vector;
 
 /**
- * Cost.java
+ * MethodCache.java
  * <p>
- * Created by lijiankun03 on 2018/8/25.
+ * Created by lijiankun24 on 2018/8/25.
  */
 public class MethodCache {
+
     /**
      * 方法缓存默认大小
      */
@@ -27,11 +28,14 @@ public class MethodCache {
         return mCacheMethods.size() - 1;
     }
 
+    public static void addMethodArgument(Object argument, int id) {
+        MethodInfo methodInfo = mCacheMethods.get(id);
+        methodInfo.addArgument(argument);
+    }
+
     public static void updateMethodInfo(Object result, String className, String methodName, String methodDesc, long startTime, int id) {
         MethodInfo methodInfo = mCacheMethods.get(id);
-        long endTime = System.currentTimeMillis();
-        methodInfo.setCost((endTime - startTime));
-        System.nanoTime();
+        methodInfo.setCost((System.currentTimeMillis() - startTime));
         methodInfo.setResult(result);
         methodInfo.setMethodDesc(methodDesc);
         methodInfo.setClassName(className);

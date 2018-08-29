@@ -2,12 +2,14 @@ package com.lijiankun24.koala.core;
 
 import org.objectweb.asm.Type;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
- * Cost.java
+ * MethodInfo.java
  * <p>
- * Created by lijiankun03 on 2018/8/25.
+ * Created by lijiankun24 on 2018/8/25.
  */
 public class MethodInfo {
 
@@ -18,9 +20,18 @@ public class MethodInfo {
     private String mMethodDesc;         // 方法描述符
     private Object mResult;             // 返回结果
     private long mCost;                 // 方法执行耗时
+    private List<Object> mArgumentList;
+
+    MethodInfo() {
+        mArgumentList = new ArrayList<>();
+    }
 
     @Override
     public String toString() {
+        System.out.println("The argumentList length is " + mArgumentList.size());
+        for (int i = 0; i < mArgumentList.size(); i++) {
+            System.out.println("The " + i + " argument is " + mArgumentList.get(i));
+        }
         return String.format(Locale.CHINA, OUTPUT_FORMAT, getMethodName(), mCost) + mResult;
     }
 
@@ -35,7 +46,7 @@ public class MethodInfo {
             }
         }
         msg.append(')');
-        mMethodName = mMethodName.replace("/", ".");
+        mClassName = mClassName.replace("/", ".");
         mMethodName = mClassName + "#" + mMethodName + msg.toString();
         return mMethodName;
     }
@@ -73,5 +84,9 @@ public class MethodInfo {
      */
     public void setMethodDesc(String methodDesc) {
         this.mMethodDesc = methodDesc;
+    }
+
+    public void addArgument(Object argument) {
+        mArgumentList.add(argument);
     }
 }

@@ -5,15 +5,15 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
 /**
- * CostTimeVisitor.java
+ * KoalaLogVisitor.java
  * <p>
- * Created by lijiankun03 on 2018/7/29.
+ * Created by lijiankun24 on 2018/7/29.
  */
-public class CostTimeVisitor extends ClassVisitor {
+public class KoalaLogVisitor extends ClassVisitor {
 
     private String mClassName;
 
-    public CostTimeVisitor(ClassVisitor classVisitor) {
+    public KoalaLogVisitor(ClassVisitor classVisitor) {
         super(Opcodes.ASM5, classVisitor);
     }
 
@@ -26,7 +26,7 @@ public class CostTimeVisitor extends ClassVisitor {
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
         MethodVisitor methodVisitor = super.visitMethod(access, name, desc, signature, exceptions);
-        methodVisitor = new CostTimeMethodVisitor(Opcodes.ASM5, methodVisitor, access, mClassName, name, desc);
+        methodVisitor = new KoalaLogMethodVisitor(Opcodes.ASM5, methodVisitor, access, mClassName, name, desc);
         return methodVisitor;
     }
 }

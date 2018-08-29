@@ -2,7 +2,7 @@ package com.lijiankun24.koala.plugin
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import com.lijiankun24.koala.CostTimeVisitor
+import com.lijiankun24.koala.KoalaLogVisitor
 import org.gradle.api.Project
 import org.apache.commons.codec.digest.DigestUtils
 import org.objectweb.asm.ClassReader
@@ -10,6 +10,11 @@ import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
 import org.apache.commons.io.FileUtils
 
+/**
+ * PreClass
+ * <p>
+ * Created by lijiankun24 on 18/7/29.
+ */
 class PreClass extends Transform {
 
     Project project
@@ -51,7 +56,7 @@ class PreClass extends Transform {
 
                             ClassReader reader = new ClassReader(file.bytes)
                             ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS)
-                            ClassVisitor visitor = new CostTimeVisitor(writer)
+                            ClassVisitor visitor = new KoalaLogVisitor(writer)
                             reader.accept(visitor, ClassReader.EXPAND_FRAMES)
 
                             byte[] code = writer.toByteArray()
