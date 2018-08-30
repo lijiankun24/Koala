@@ -26,7 +26,7 @@ dependencies {
 //}
 //
 //apply plugin: "com.gradle.plugin-publish"
-//version = "1.0.2"            // 插件的版本号
+//version = "1.1.1"            // 插件的版本号
 //group = "com.lijiankun24"    // 插件的组名
 //
 //pluginBundle {

@@ -12,7 +12,7 @@ public class MethodCache {
     /**
      * 方法缓存默认大小
      */
-    private static final int INIT_CACHE_SIZE = 10240;
+    private static final int INIT_CACHE_SIZE = 1024;
     /**
      * 方法名缓存
      */
@@ -44,6 +44,6 @@ public class MethodCache {
 
     public static void printMethodInfo(int id) {
         MethodInfo methodInfo = mCacheMethods.get(id);
-        System.out.println(methodInfo.toString());
+        Printer.printMethodInfo(methodInfo);
     }
 }

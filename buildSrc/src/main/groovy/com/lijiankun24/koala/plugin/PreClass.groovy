@@ -52,7 +52,6 @@ class PreClass extends Transform {
                         def name = file.name
                         if (name.endsWith(".class") && !(name == ("R.class"))
                                 && !name.startsWith("R\$") && !(name == ("BuildConfig.class"))) {
-                            project.logger.error(" file's name is " + name)
 
                             ClassReader reader = new ClassReader(file.bytes)
                             ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS)
