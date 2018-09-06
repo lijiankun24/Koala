@@ -4,9 +4,9 @@
 
 ## 简介
 
-在开发项目的时候，经常会想看一个方法的入参、返回结果和执行耗时，我们通常的做法是打日志、打断点调试去看，这样做确实可以达到我们的目的，但是效率是低下的。
-JakeWharton 大神的 [hugo](https://github.com/JakeWharton/hugo) 库便具有这样的功能，可以打印方法的入参、返回结果和执行耗时。
-Koala 也具有和 hugo 同样的功能，可以打印方法的入参、返回结果和执行耗时。Koala 和 hugo 都是基于 AOP 思想，和 hugo 不同的是使用 AspectJ 技术实现的，而 Koala 是使用 ASM 修改字节码实现的。
+* 在开发项目的时候，经常会想看一个方法的入参、返回结果和执行耗时，我们通常的做法是打日志、打断点调试去看，这样做确实可以达到我们的目的，但是效率是低下的。
+* JakeWharton 大神的 [hugo](https://github.com/JakeWharton/hugo) 库便具有这样的功能，可以打印方法的入参、返回结果和执行耗时。
+* Koala 也具有和 hugo 同样的功能，可以打印方法的入参、返回结果和执行耗时。Koala 和 hugo 都是基于 AOP 思想，和 hugo 不同的是，hugo 使用 AspectJ 技术实现的，而 Koala 是使用 ASM 修改字节码实现的。
 
 ## 添加依赖
 ### 添加 Koala Gradle Plugin 依赖
@@ -79,7 +79,7 @@ Maven:
 * **微博**: <http://weibo.com/lijiankun24>
 
 ## 鸣谢
-感谢以下三个库和它的作者：
+感谢以下四个库和它的作者：
 * **hugo**: <https://github.com/JakeWharton/hugo>
 * **CostTime**: <https://github.com/JeasonWong/CostTime>
 * **AppMethodTime**: <https://github.com/zjw-swun/AppMethodTime>
