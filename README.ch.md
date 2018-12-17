@@ -2,6 +2,17 @@
 
 ![](https://img.shields.io/badge/language-java-brightgreen.svg)  [ ![Download](https://api.bintray.com/packages/lijiankun/maven/koala/images/download.svg) ](https://bintray.com/lijiankun/maven/koala/_latestVersion)
 
+## 相关博文
+在开发之前学习了一些 Java 字节码、Java 虚拟机、ASM 的相关知识，梳理成博文如下，请多多指教
+* [认识 .class 文件的字节码结构
+](https://www.jianshu.com/p/e5062d62a3d1)
+* [理解 JVM 中的类加载机制](https://www.jianshu.com/p/0cf9aa251921)
+* [虚拟机字节码执行引擎](https://www.jianshu.com/p/58f876f2e8b8)
+* [访问者模式和 ASM
+](https://www.jianshu.com/p/e4b8cb0b3204)
+* [ASM 库的介绍和使用
+](https://www.jianshu.com/p/905be2a9a700)
+
 ## 简介
 
 在开发项目的时候，经常会想看一个方法的入参、返回结果和执行耗时，我们通常的做法是打日志、打断点调试去看，这样做确实可以达到我们的目的，但是效率是低下的。
