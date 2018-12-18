@@ -12,6 +12,7 @@
 ](https://www.jianshu.com/p/e4b8cb0b3204)
 * [ASM 库的介绍和使用
 ](https://www.jianshu.com/p/905be2a9a700)
+* [从 Java 字节码到 ASM 实践](https://www.jianshu.com/p/c2c1d350d245)
 
 ## 简介
 
