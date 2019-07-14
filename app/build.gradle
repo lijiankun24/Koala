@@ -21,8 +21,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.android.support.constraint:constraint-layout:1.1.2'
-//    compile 'com.lijiankun24:koala:1.0.0'
-    compile project(':koala')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    implementation 'com.lijiankun24:koala:1.0.0'
+    implementation project(':koala')
 }
