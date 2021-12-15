@@ -54,37 +54,16 @@ class KoalaLogMethodVisitor extends AdviceAdapter {
             methodId = newLocal(Type.INT_TYPE);
             mv.visitMethodInsn(INVOKESTATIC, "com/lijiankun24/koala/core/MethodCache", "request", "()I", false);
             mv.visitIntInsn(ISTORE, methodId);
-
+            int index = isStaticMethod?0:1;
             for (int i = 0; i < argumentArrays.length; i++) {
                 Type type = argumentArrays[i];
-                int index = isStaticMethod ? i : (i + 1);
-                switch (type.getSort()) {
-                    case Type.BOOLEAN:
-                    case Type.CHAR:
-                    case Type.BYTE:
-                    case Type.SHORT:
-                    case Type.INT:
-                        mv.visitVarInsn(ILOAD, index);
-                        box(type);
-                        break;
-                    case Type.FLOAT:
-                        mv.visitVarInsn(FLOAD, index);
-                        box(type);
-                        break;
-                    case Type.LONG:
-                        mv.visitVarInsn(LLOAD, index);
-                        box(type);
-                        break;
-                    case Type.DOUBLE:
-                        mv.visitVarInsn(DLOAD, index);
-                        box(type);
-                        break;
-                    case Type.ARRAY:
-                    case Type.OBJECT:
-                        mv.visitVarInsn(ALOAD, index);
-                        box(type);
-                        break;
-                }
+                //获取对应类型的加载指令
+                int opcode = toVarInstruction(type);
+                //入栈局部变量：加载指定索引位置的局部变量
+                mv.visitVarInsn(opcode, index);
+                box(type);
+                //更新索引，double和long占用两个slot
+                index += opcode == DLOAD || opcode == LLOAD ? 2 : 1;
                 mv.visitVarInsn(ILOAD, methodId);
                 visitMethodInsn(INVOKESTATIC, "com/lijiankun24/koala/core/MethodCache", "addMethodArgument",
                         "(Ljava/lang/Object;I)V", false);
@@ -123,5 +102,21 @@ class KoalaLogMethodVisitor extends AdviceAdapter {
             mv.visitMethodInsn(INVOKESTATIC, "com/lijiankun24/koala/core/MethodCache",
                     "printMethodInfo", "(I)V", false);
         }
+    }
+    public static int toVarInstruction(Type type) {
+
+        if (type == BOOLEAN_TYPE || type == BYTE_TYPE || type == CHAR_TYPE || type == INT_TYPE || type == SHORT_TYPE) {
+            return ILOAD;
+        } else if (type == DOUBLE_TYPE) {
+            return DLOAD;
+        } else if (type == FLOAT_TYPE) {
+            return FLOAD;
+        } else if (type == LONG_TYPE) {
+            return LLOAD;
+        } else {
+            //对象类型
+            return ALOAD;
+        }
+
     }
 }
